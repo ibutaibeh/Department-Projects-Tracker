@@ -1,3 +1,0 @@
-ERD : https://lucid.app/lucidchart/88fb90a9-0143-40cd-8036-eb30a03149f4/view
-Trello: https://trello.com/b/VP83KLhK/department-projects-tracker-plan
-figma: https://www.figma.com/design/CYWAJTq4SQLvhXj1z11vlU/department-projects-tracker-plan?node-id=1-33&t=kTOIe2098o1MPcFO-0
