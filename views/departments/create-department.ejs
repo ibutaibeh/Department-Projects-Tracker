@@ -8,5 +8,14 @@
 <body>
         <%-include('../partials/_navbar.ejs')%>
 <h1>depeartmet create test</h1>
+<form action="/departments/create-department" method="POST">
+
+  <label for="departmentname">Department Name</label>
+  <input type="text" name="departmentname" id="departmentname">
+<br>
+<br>
+  <button type="submit">Create Department</button>
+
+</form>
 </body>
 </html>

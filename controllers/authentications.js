@@ -1,8 +1,12 @@
+/*-------------------------------- Packages ----------------------------------*/
+// express, router, bcrypt and all related models
 const express= require('express');
 const router= express.Router();
 const User= require('../models/user');
+const Department= require('../models/department');
 const bcrypt = require('bcrypt');
 
+/*-------------------------------- Create Accounts ----------------------------------*/
 router.get('/create-account', async (req,res)=>{
     res.render('authentications/create-account.ejs')
 });
@@ -23,12 +27,10 @@ const user= await User.create(req.body);
 res.send(`Thanks for creating the account for ${user.username}`)
 });
 
-
-
+/*-------------------------------- Sign In ----------------------------------*/
 router.get('/sign-in',async(req,res)=>{
     res.render('authentications/sign-in.ejs')
 })
-
 
 router.post('/sign-in',async(req,res)=>{
     const userInDatabase= await User.findOne({username:req.body.username})
@@ -50,9 +52,13 @@ router.post('/sign-in',async(req,res)=>{
     res.redirect('/');
 })
 
+/*-------------------------------- Sign out ----------------------------------*/
+
 router.get('/sign-out',(req,res)=>{
     req.session.destroy();
     res.redirect('/');
 });
+
+/*-------------------------------- Module Exports ----------------------------------*/
 
 module.exports=router
