@@ -33,7 +33,11 @@ app.get('/',async(req,res)=>{
 
 
 const authenticationsControl= require('./controllers/authentications');
+const User = require('./models/user');
 app.use('/authentications',authenticationsControl);
+const departmentsControl= require('./controllers/departments');
+const Department= require('./models/department');
+app.use('/departments',departmentsControl);
 
 
 app.listen(port,()=>{

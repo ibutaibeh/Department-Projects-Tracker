@@ -1,0 +1,16 @@
+<nav>
+<a href="/">Home</a>
+
+    <%if(user){%>
+
+
+<a href="/authentications/sign-out">Sign out</a>
+
+
+
+   <%}else{%>
+
+<a href="/authentications/sign-in">Sign in</a>
+
+   <%}%>
+</nav>

@@ -10,12 +10,14 @@ const userSchema= new mongoose.Schema({
     },
     role:{
         type:String,
-        required:true
+        enum:['admin','chief','employee']
     },
-    department:{
-        type:String,
-        required:true
+    department:[
+        {
+        type:mongoose.Schema.Types.ObjectId,
+        ref:'Department'
     },
+    ]
 });
 
 const User = mongoose.model('User',userSchema);
