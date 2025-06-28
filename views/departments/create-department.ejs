@@ -7,7 +7,7 @@
 </head>
 <body>
         <%-include('../partials/_navbar.ejs')%>
-<h1>depeartmet create test</h1>
+<h1>Add New Department</h1>
 <form action="/departments/create-department" method="POST">
 
   <label for="departmentname">Department Name</label>
@@ -17,5 +17,16 @@
   <button type="submit">Create Department</button>
 
 </form>
+
+<ul>
+<%departments.forEach(department=>{%>
+  <form action="/departments/create-department/<%=department._id%>?_method=DELETE" method="POST">
+ <li><%=department.departmentname%></li>
+ <button type="submit">Delete</button>
+  </form>
+
+<%})%>
+
+</ul>
 </body>
 </html>

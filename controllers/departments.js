@@ -8,7 +8,8 @@ const Department= require('../models/department');
 /*-------------------------------- Create New Department ----------------------------------*/
 
 router.get('/create-department', async (req,res)=>{
-    res.render('departments/create-department.ejs')
+    const departments= await Department.find();
+    res.render('departments/create-department.ejs',{departments});
 });
 
 router.post('/create-department',async(req,res)=>{
@@ -21,15 +22,13 @@ const department= await Department.create(req.body);
 res.redirect('/departments/create-department')
 });
 
-/*-------------------------------- View All Departments ----------------------------------*/
-
-
-
-/*-------------------------------- Edit Departments ----------------------------------*/
-
 
 /*-------------------------------- delete Departments ----------------------------------*/
-
+router.delete('/create-department/:departmentId',async(req,res)=>{
+    const department= await Department.findByIdAndDelete(req.params.departmentId);
+    department.deleteOne(req.body);
+    res.redirect('/departments/create-department');
+})
 
 
 /*-------------------------------- Module Exports ----------------------------------*/
