@@ -8,7 +8,9 @@ const bcrypt = require('bcrypt');
 
 /*-------------------------------- Create Accounts ----------------------------------*/
 router.get('/create-account', async (req,res)=>{
-    res.render('authentications/create-account.ejs')
+    const departments= await Department.find();
+    const accounts= await User.find();
+    res.render('authentications/create-account.ejs',{departments,accounts})
 });
 
 router.post('/create-account',async(req,res)=>{
@@ -24,7 +26,7 @@ const hashedPassword = bcrypt.hashSync(req.body.password,10);
 req.body.password= hashedPassword;
 
 const user= await User.create(req.body);
-res.send(`Thanks for creating the account for ${user.username}`)
+res.redirect('/authentications/create-account')
 });
 
 /*-------------------------------- Sign In ----------------------------------*/
@@ -59,6 +61,13 @@ router.get('/sign-out',(req,res)=>{
     res.redirect('/');
 });
 
+
+/*-------------------------------- Delete Account ----------------------------------*/
+router.delete('/create-account/:accountId',async(req,res)=>{
+    const accounts= await User.findByIdAndDelete(req.params.accountId);
+    accounts.deleteOne(req.body);
+    res.redirect('/authentications/create-account');
+})
 /*-------------------------------- Module Exports ----------------------------------*/
 
 module.exports=router

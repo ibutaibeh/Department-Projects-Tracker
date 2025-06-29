@@ -17,8 +17,24 @@
 <option value="employee">Employee</option>
   </select>
   <br>
-  <label for="department">Department</label>
-  <input type="text" name="department" id="department">
+ <label for="department">Department</label>
+  
+<select name="department" id="department">
+  <%departments.forEach(department=>{%>
+  <option value="<%=department._id%>"><%=department.departmentname%></option>
+  <%})%>
+  </select>
 <br>
   <button type="submit">Create Account</button>
 </form>
+
+<h2>Account List</h2>
+<ul>
+<%accounts.forEach(account=>{%>
+  <form action="/authentications/create-account/<%=account._id%>?_method=DELETE" method="POST">
+  <li>Username : <%=account.username%> | Role: <%=account.role%></li>
+ <button type="submit">Delete</button>
+  </form>
+<%})%>
+
+</ul>

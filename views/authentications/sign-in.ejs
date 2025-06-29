@@ -6,6 +6,8 @@
     <title>Document</title>
 </head>
 <body>
+    <%-include('../partials/_navbar.ejs')%>
+
     <form method="POST" action="/authentications/sign-in">
   <label for="username">Username</label>
   <input type="text" name="username" id="username">
