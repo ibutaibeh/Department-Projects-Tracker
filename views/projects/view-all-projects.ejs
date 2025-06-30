@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Projects</title>
+</head>
+<body>
+            <%-include('../partials/_navbar.ejs')%>
+
+    <h1>view all project</h1>
+    <ul>
+        <%projects.forEach(project=>{%>
+<li><%=project.projectname%> <a href="/projects/<%=project._id%>/edit">view more details</a></li>
+        <%})%>
+    </ul>
+</body>
+</html>

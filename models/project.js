@@ -28,12 +28,11 @@ const projectSchema= new mongoose.Schema({
         type:String,
         required:false
     },
-    owener:[
+    owener:
         {
         type: mongoose.Schema.Types.ObjectId,
         ref:'User'
     },
-]
     
 });
 
