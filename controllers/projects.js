@@ -36,16 +36,18 @@ router.get('/:projectId/edit',async(req,res)=>{
     res.render('projects/edit.ejs',{project,accounts});
 })
 
-router.put('/:projectId/edit',async(req,res)=>{
-     await Project.findByIdAndUpdate(req.params.projectId);
+router.put('/:projectId',async(req,res)=>{
+    const project = await Project.findById(req.params.projectId);
+    await project.updateOne(req.body);
      res.redirect('/projects/view-all-projects')
 })
-//i have to do forEach loop ro comapre the value of the owener 
-//for the date i need to use JS to display the date 
-//update page /:id/edit
-//put to update
-/*-------------------------------- Delete Projects ----------------------------------*/
 
+/*-------------------------------- Delete Projects ----------------------------------*/
+router.delete('/:projectId',async(req,res)=>{
+    const project = await Project.findById(req.params.projectId);
+    await project.deleteOne(req.body);
+     res.redirect('/projects/view-all-projects')
+})
 
 
 /*-------------------------------- Module Exports ----------------------------------*/

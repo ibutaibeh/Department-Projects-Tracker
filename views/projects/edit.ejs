@@ -10,16 +10,16 @@
 
             <h2>Update and Edit Project</h2>
 
-<form action="/projects/<%=project._id%>/edit?_method=PUT" method="POST">
+<form action="/projects/<%=project._id%>?_method=PUT" method="POST">
 
   <label for="projectname"> Project Name</label>
   <input type="text" name="projectname" id="projectname" value="<%=project.projectname%>">
 <br>
 <label for="startdate"> Start Date</label>
-  <input type="date" name="startdate" id="startdate" value="<%=  %>">
+  <input type="date" name="startdate" id="startdate">
 <br>
 <label for="enddate"> End Date</label>
-  <input type="date" name="enddate" id="enddate" value="<%=project.enddate%>">
+  <input type="date" name="enddate" id="enddate">
 <br>
 <label for="location"> Project Location</label>
   <input type="text" name="location" id="location" value="<%=project.location%>">
@@ -47,6 +47,8 @@
     <button type="submit">Update Project</button>
 
 </form>
-
+<form action="/projects/<%=project._id%>?_method=DELETE" method="POST">
+  <button type="submit">Delete this Project</button>
+</form>
 </body>
 </html>
