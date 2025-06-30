@@ -50,6 +50,9 @@ const departmentsControl= require('./controllers/departments');
 const Department= require('./models/department');
 app.use('/departments',departmentsControl);
 
+const projectsControl= require('./controllers/projects');
+const Project=require('./models/project');
+app.use('/projects',projectsControl);
 /*-------------------------------- Request Listen ----------------------------------*/
 app.listen(port,()=>{
     console.log(`check http://localhost:${port}`);

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Project</title>
+</head>
+<body>
+        <%-include('../partials/_navbar.ejs')%>
+<h1>Add New Project</h1>
+<form action="/projects/create-project" method="POST">
+
+  <label for="projectname"> Project Name</label>
+  <input type="text" name="projectname" id="projectname">
+<br>
+<label for="startdate"> Start Date</label>
+  <input type="date" name="startdate" id="startdate">
+<br>
+<label for="enddate"> End Date</label>
+  <input type="date" name="ebddate" id="enddate">
+<br>
+<label for="location"> Project Location</label>
+  <input type="text" name="location" id="location">
+<br>
+<label for="area">Project Area in sq.km: </label>
+  <input type="number" name="area" id="area" min="0">
+<br>
+<label for="chartnumber"> Project Chart Number: </label>
+  <input type="number" name="chartnumber" id="chartnumber" min="0">
+<br>
+<label for="remark"> Remarks: </label>
+<textarea name="remark" id="remark" rows="2" cols="40"> add you remarks here...</textarea>
+<br>
+<label for="owener"> Assigend to: </label>
+<select name="owener" id="owener">
+  <%accounts.forEach(account=>{%>
+  <option value="<%=account._id%>"><%=account.username%></option>
+  <%})%>
+  </select>
+<br>
+<br>
+  <button type="submit">Create Project</button>
+
+</form>
+</body>
+</html>
