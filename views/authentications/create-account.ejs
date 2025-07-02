@@ -2,16 +2,17 @@
 <h1>Create a new account</h1>
 <form method="POST" action="/authentications/create-account">
   <label for="username">Username</label>
-  <input type="text" name="username" id="username">
+  <input type="text" name="username" id="username" required>
   <br>
   <label for="password">Password</label>
-  <input type="password" name="password" id="password">
+  <input type="password" name="password" id="password" >
   <br>
   <label for="confirmPassword">Confirm Password</label>
-  <input type="password" name="confirmPassword" id="confirmPassword">
+  <input type="password" name="confirmPassword" id="confirmPassword" >
   <br>
   <label for="role">Role</label>
-  <select name="role" id="role">
+  <select name="role" id="role" required>
+    <option value="">--Choose role--</option>
 <option value="admin">Admin</option>
 <option value="chief">Chief</option>
 <option value="employee">Employee</option>
@@ -19,8 +20,9 @@
   <br>
  <label for="department">Department</label>
   
-<select name="department" id="department">
-  <%departments.forEach(department=>{%>
+<select name="department" id="department" required>
+  <option value="">--Choose Department--</option>
+  <% departments.forEach(department=>{ %>
   <option value="<%=department._id%>"><%=department.departmentname%></option>
   <%})%>
   </select>

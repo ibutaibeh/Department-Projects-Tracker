@@ -32,7 +32,8 @@
 <textarea name="remark" id="remark" rows="2" cols="40"> add you remarks here...</textarea>
 <br>
 <label for="owener"> Assigend to: </label>
-<select name="owener" id="owener">
+<select name="owener" id="owener" required>
+  <option value="">--select--</option>
   <%accounts.forEach(account=>{%>
   <option value="<%=account._id%>"><%=account.username%></option>
   <%})%>

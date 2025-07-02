@@ -45,10 +45,11 @@ router.post('/sign-in',async(req,res)=>{
     if(!validPassword){
         return res.send('Login Failed')
     }
-
+//you can add all the attributes needed
     req.session.user={
         username: userInDatabase.username,
-        _id:userInDatabase._id
+        _id:userInDatabase._id,
+        role:userInDatabase.role
     }
 
     res.redirect('/');

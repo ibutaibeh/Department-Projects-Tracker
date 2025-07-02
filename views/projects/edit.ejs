@@ -16,10 +16,10 @@
   <input type="text" name="projectname" id="projectname" value="<%=project.projectname%>">
 <br>
 <label for="startdate"> Start Date</label>
-  <input type="date" name="startdate" id="startdate">
+  <input type="date" name="startdate" id="startdate" value="<%= project.startdate ? project.startdate.toISOString().split('T')[0] : '' %>">
 <br>
 <label for="enddate"> End Date</label>
-  <input type="date" name="enddate" id="enddate">
+  <input type="date" name="enddate" id="enddate" value="<%= project.startdate ? project.startdate.toISOString().split('T')[0] : '' %>">
 <br>
 <label for="location"> Project Location</label>
   <input type="text" name="location" id="location" value="<%=project.location%>">
@@ -36,7 +36,8 @@
 
 <label for="owener"> it is assigned to <%=project.owener.username%> re-assigend to: </label>
 <br>
-<select name="owener" id="owener" >
+<select name="owener" id="owener" required>
+  <option value="">--select--</option>
   <%accounts.forEach(account=>{%>
   <option value="<%=account._id%>"  ><%=account.username%></option>
   <%})%>

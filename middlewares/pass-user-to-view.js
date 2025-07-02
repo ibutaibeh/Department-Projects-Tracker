@@ -3,3 +3,5 @@ const passUsertoView= (req,res,next)=>{
     next();
 }
 module.exports= passUsertoView;
+
+//we use this middleware to pass the user to all ejs pages
