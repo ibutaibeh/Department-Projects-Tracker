@@ -7,12 +7,35 @@
 </head>
 <body>
             <%-include('../partials/_navbar.ejs')%>
-
-    <h1>view all project</h1>
+<%if(user && user.role==='chief'){%>
+<h1>View All Projects</h1>
+<%if(projects.length > 0){%>
     <ul>
         <%projects.forEach(project=>{%>
 <li><%=project.projectname%> <a href="/projects/<%=project._id%>/edit">view more details</a></li>
         <%})%>
     </ul>
+
+<%}else{%>
+<p>There are no Projects</p>
+    <a href="/projects/create-project">Click here to create a new project</a>
+<%}%>
+<%}%>
+
+<%if(user && user.role==='employee'){%>
+<h1>view Projects</h1>
+<%if(projects.length > 0){%>
+    <ul>
+        <%projects.forEach(project=>{%>
+<li><%=project.projectname%> <a href="/projects/<%=project._id%>/edit">view more details</a></li>
+        <%})%>
+    </ul>
+
+<%}else{%>
+<p>There are no Projects</p>
+<%}%>
+<%}%>
+
+
 </body>
 </html>

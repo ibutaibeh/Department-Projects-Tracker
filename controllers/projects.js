@@ -14,12 +14,14 @@ router.get('/create-project',async(req,res)=>{
 });
 
 router.post('/create-project',async(req,res)=>{
+
+if(req.session.user.role==='chief'){
     await Project.create(req.body);
     res.redirect('/projects/create-project');
+}else{
+    res.send('You are not Authorized to Create New Prjects');
+}
 })
-
-
-
 /*-------------------------------- Edit and update project ----------------------------------*/
 
 router.get('/view-all-projects',async(req,res)=>{
@@ -38,15 +40,26 @@ router.get('/:projectId/edit',async(req,res)=>{
 
 router.put('/:projectId',async(req,res)=>{
     const project = await Project.findById(req.params.projectId);
+    if(req.session.user.role==='chief'){
     await project.updateOne(req.body);
      res.redirect('/projects/view-all-projects')
+    }else{
+        res.send('You are not Authorized to Edit/Update Projects')
+    }
+
 })
 
 /*-------------------------------- Delete Projects ----------------------------------*/
 router.delete('/:projectId',async(req,res)=>{
     const project = await Project.findById(req.params.projectId);
-    await project.deleteOne(req.body);
+
+if(req.session.user.role==='chief'){
+   await project.deleteOne(req.body);
      res.redirect('/projects/view-all-projects')
+}else{
+    res.send('You are not Authorized to delete Projects')
+}
+ 
 })
 
 

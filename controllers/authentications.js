@@ -25,8 +25,14 @@ router.post('/create-account',async(req,res)=>{
 const hashedPassword = bcrypt.hashSync(req.body.password,10);
 req.body.password= hashedPassword;
 
-const user= await User.create(req.body);
+
+if(req.session.user.role==='admin'){
+     await User.create(req.body);
 res.redirect('/authentications/create-account')
+}else{
+    res.send('You are not authorize to create accounts')
+}
+
 });
 
 /*-------------------------------- Sign In ----------------------------------*/
@@ -49,7 +55,7 @@ router.post('/sign-in',async(req,res)=>{
     req.session.user={
         username: userInDatabase.username,
         _id:userInDatabase._id,
-        role:userInDatabase.role
+        role:userInDatabase.role,
     }
 
     res.redirect('/');
@@ -66,8 +72,14 @@ router.get('/sign-out',(req,res)=>{
 /*-------------------------------- Delete Account ----------------------------------*/
 router.delete('/create-account/:accountId',async(req,res)=>{
     const accounts= await User.findByIdAndDelete(req.params.accountId);
+    
+    if(req.session.user.role==='admin'){
     accounts.deleteOne(req.body);
     res.redirect('/authentications/create-account');
+    }else{
+        res.send('You are not authorize to delete accounts');
+    }
+
 })
 /*-------------------------------- Module Exports ----------------------------------*/
 

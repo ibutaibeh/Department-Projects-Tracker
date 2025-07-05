@@ -18,16 +18,26 @@ if(departmentInDatabase){
     return res.send('Department already Registered')
 }
 
-const department= await Department.create(req.body);
+if(req.session.user.role==='admin'){
+await Department.create(req.body);
 res.redirect('/departments/create-department')
+}else{
+    res.send('You are not authorize to Create Departments');
+}
+
+
 });
 
 
 /*-------------------------------- delete Departments ----------------------------------*/
 router.delete('/create-department/:departmentId',async(req,res)=>{
     const department= await Department.findByIdAndDelete(req.params.departmentId);
+if(req.session.user.role==='admin'){
     department.deleteOne(req.body);
     res.redirect('/departments/create-department');
+}else{
+    res.send('You are not authorize to Delete Departments');
+}
 })
 
 

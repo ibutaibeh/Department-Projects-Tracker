@@ -19,7 +19,7 @@
   <input type="date" name="startdate" id="startdate" value="<%= project.startdate ? project.startdate.toISOString().split('T')[0] : '' %>">
 <br>
 <label for="enddate"> End Date</label>
-  <input type="date" name="enddate" id="enddate" value="<%= project.startdate ? project.startdate.toISOString().split('T')[0] : '' %>">
+  <input type="date" name="enddate" id="enddate" value="<%= project.startdate ? project.enddate.toISOString().split('T')[0] : '' %>">
 <br>
 <label for="location"> Project Location</label>
   <input type="text" name="location" id="location" value="<%=project.location%>">

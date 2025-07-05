@@ -25,6 +25,5 @@ My goal was to enhance my department’s efficiency in monitoring and managing p
 
 
 ### *What is Next*
-+ Imporove the theme
-+ Add more functionality ( calculating statistics)
-+ Add dynamic graphs
++ Add Log that keep track of all changes. 
++ Add more functionality (calculating statistics / Dynamic Graphs)
