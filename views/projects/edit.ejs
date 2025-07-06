@@ -7,50 +7,59 @@
       <link rel="stylesheet" href="/stylesheets/style.css">
 </head>
 <body>
-            <%-include('../partials/_navbar.ejs')%>
+<%-include('../partials/_navbar.ejs')%>
 
-            <h2>Update and Edit Project</h2>
-
-<form action="/projects/<%=project._id%>?_method=PUT" method="POST">
-
-  <label for="projectname"> Project Name</label>
-  <input type="text" name="projectname" id="projectname" value="<%=project.projectname%>">
-<br>
-<label for="startdate"> Start Date</label>
-  <input type="date" name="startdate" id="startdate" value="<%= project.startdate ? project.startdate.toISOString().split('T')[0] : '' %>">
-<br>
-<label for="enddate"> End Date</label>
-  <input type="date" name="enddate" id="enddate" value="<%= project.startdate ? project.enddate.toISOString().split('T')[0] : '' %>">
-<br>
-<label for="location"> Project Location</label>
-  <input type="text" name="location" id="location" value="<%=project.location%>">
-<br>
-<label for="area">Project Area in sq.km: </label>
-  <input type="number" name="area" id="area" min="0" value="<%=project.area%>">
-<br>
-<label for="chartnumber"> Project Chart Number: </label>
-  <input type="number" name="chartnumber" id="chartnumber" min="0" value="<%=project.chartnumber%>">
-<br>
-<label for="remark"> Remarks: </label>
-<textarea name="remark" id="remark" rows="2" cols="40"> <%=project.remark%></textarea>
-<br>
-
-<label for="owener"> it is assigned to <%=project.owener.username%> re-assigend to: </label>
-<br>
-<select name="owener" id="owener" required>
+<div class="flex flex-col items-center">
+<div><h2 class="block mb-2 text-lg font-bold text-gray-900">Update and Edit Project</h2></div>
+<div>
+  <form class="max-w-md mx-auto" action="/projects/<%=project._id%>?_method=PUT" method="POST">
+  <div class="mb-5">
+  <label for="projectname" class="block mb-2 text-sm font-medium text-gray-900"> Project Name</label>
+  <input  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" type="text" name="projectname" id="projectname" value="<%=project.projectname%>">
+  </div>
+  <div class="mb-5">
+  <label for="startdate" class="block mb-2 text-sm font-medium text-gray-900"> Start Date</label>
+  <input  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" type="date" name="startdate" id="startdate" value="<%= project.startdate ? project.startdate.toISOString().split('T')[0] : '' %>">
+  </div>
+  <div class="mb-5">
+  <label for="enddate" class="block mb-2 text-sm font-medium text-gray-900"> End Date</label>
+  <input  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" type="date" name="enddate" id="enddate" value="<%= project.startdate ? project.enddate.toISOString().split('T')[0] : '' %>">
+  </div>
+  <div class="mb-5">
+  <label for="location" class="block mb-2 text-sm font-medium text-gray-900"> Project Location</label>
+  <input  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" type="text" name="location" id="location" value="<%=project.location%>">
+  </div>
+  <div class="mb-5">
+  <label for="area" class="block mb-2 text-sm font-medium text-gray-900">Project Area in sq.km: </label>
+  <input  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" type="number" name="area" id="area" min="0" value="<%=project.area%>">
+  </div>
+  <div class="mb-5">
+  <label for="chartnumber" class="block mb-2 text-sm font-medium text-gray-900"> Project Chart Number: </label>
+  <input  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" type="number" name="chartnumber" id="chartnumber" min="0" value="<%=project.chartnumber%>">
+  </div>
+  <div class="mb-5">
+  <label for="remark" class="block mb-2 text-sm font-medium text-gray-900"> Remarks: </label>
+  <textarea  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" name="remark" id="remark" rows="2" cols="40"> <%=project.remark%></textarea>
+  </div>
+  <div class="mb-5">
+  <label for="owener" class="block mb-2 text-sm font-medium text-gray-900"> it is assigned to <%=project.owener.username%> re-assigend to: </label>
+  <select  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" name="owener" id="owener" required>
   <option value="">--select--</option>
   <%accounts.forEach(account=>{%>
   <option value="<%=account._id%>"  ><%=account.username%></option>
   <%})%>
   </select>
-
-  <br>
-  <br>
-    <button type="submit">Update Project</button>
-
+  </div>
+  <div class="mb-5">
+  <button class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center" type="submit">Update Project</button>
+  </div>
 </form>
-<form action="/projects/<%=project._id%>?_method=DELETE" method="POST">
-  <button type="submit">Delete this Project</button>
+</div>
+<div>
+<form class="max-w-md mx-auto" action="/projects/<%=project._id%>?_method=DELETE" method="POST">
+  <div><button class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center" type="submit">Delete this Project</button></div>
 </form>
+</div>
+</div>
 </body>
 </html>

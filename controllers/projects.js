@@ -25,7 +25,7 @@ if(req.session.user.role==='chief'){
 /*-------------------------------- Edit and update project ----------------------------------*/
 
 router.get('/view-all-projects',async(req,res)=>{
-    const projects=await Project.find();
+    const projects=await Project.find().populate('owener');
     const accounts= await User.find();
     res.render('projects/view-all-projects.ejs',{projects,accounts})
 })

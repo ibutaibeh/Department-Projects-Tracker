@@ -7,36 +7,47 @@
       <link rel="stylesheet" href="/stylesheets/style.css">
 </head>
 <body>
-            <%-include('../partials/_navbar.ejs')%>
+
+<%-include('../partials/_navbar.ejs')%>
+<div class="text-4xl font-semibold flex flex-col items-center gap-5">
 <%if(user && user.role==='chief'){%>
-<h1>View All Projects</h1>
+<h1>Projects lists</h1>
 <%if(projects.length > 0){%>
-    <ul>
-        <%projects.forEach(project=>{%>
-<li><%=project.projectname%> <a href="/projects/<%=project._id%>/edit">view more details</a></li>
-        <%})%>
-    </ul>
-
+ <ul class="flex flex-col text-2xl">
+    <%projects.forEach(project=>{%>
+    <div class="flex justify-between gap-8 mb-5">
+        <li>Project Name: <%=project.projectname%></li>
+        <li>Responsible: <%=project.owener.username.toUpperCase()%></li>
+        <a class="text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center" href="/projects/<%=project._id%>/edit">More Details</a>
+    </div> 
+    <%})%>
+ </ul>
 <%}else{%>
-<p>There are no Projects</p>
-    <a href="/projects/create-project">Click here to create a new project</a>
+<p class="text-2xl text-red-500">There are no Projects</p>
+    <a class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-lg w-full sm:w-auto px-5 py-2.5 text-center" href="/projects/create-project">Create a new project</a>
 <%}%>
 <%}%>
+</div>
 
+
+
+<div class="text-4xl font-semibold flex flex-col items-center gap-5">
 <%if(user && user.role==='employee'){%>
-<h1>view Projects</h1>
+<h1>Projects lists</h1>
 <%if(projects.length > 0){%>
-    <ul>
-        <%projects.forEach(project=>{%>
-<li><%=project.projectname%> <a href="/projects/<%=project._id%>/edit">view more details</a></li>
-        <%})%>
-    </ul>
-
+ <ul class="flex flex-col text-2xl">
+    <%projects.forEach(project=>{%>
+    <div class="flex justify-between gap-8 mb-5">
+        <li>Project Name: <%=project.projectname%></li>
+        <li>Responsible: <%=project.owener.username.toUpperCase()%></li>
+        <a class="text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center" href="/projects/<%=project._id%>/edit">More Details</a>
+    </div> 
+    <%})%>
+ </ul>
 <%}else{%>
-<p>There are no Projects</p>
+<p class="text-2xl text-red-500">There are no Projects</p>
 <%}%>
 <%}%>
-
-
+</div>
 </body>
 </html>
