@@ -6,13 +6,13 @@
 The Department Projects Tracker is a web-based application developed to help departments efficiently monitor ongoing projects and easily add new ones. It was created to address the challenge of managing multiple projects across teams, especially when updates and responsibilities are often scattered or hard to track. The app provides a centralized dashboard where users can view project details, track progress, assign tasks, and update statuses in real time. By simplifying project oversight and improving communication, it ensures that departments stay organized, informed, and aligned with their goals.
 
 ### Why this app?
-My goal was to enhance my department’s efficiency in monitoring and managing project progress.
+My goal was to enhance my department’s efficiency in monitoring and managing projects progress.
 
 ### Technologies Used
 + ``MongoDB``
 + ``Node.js``
 + ``EJS``
-+ ``CSS``
++ ``Tailwind CSS``
 
 ### ***References***
 > [GitHUB Repository](https://github.com/ibutaibeh/Department-Projects-Tracker) 
