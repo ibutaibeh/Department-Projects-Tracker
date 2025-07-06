@@ -1,42 +1,57 @@
   <%-include('../partials/_navbar.ejs')%>
-<h1>Create a new account</h1>
-<form method="POST" action="/authentications/create-account">
-  <label for="username">Username</label>
-  <input type="text" name="username" id="username" required>
-  <br>
-  <label for="password">Password</label>
-  <input type="password" name="password" id="password" >
-  <br>
-  <label for="confirmPassword">Confirm Password</label>
-  <input type="password" name="confirmPassword" id="confirmPassword" >
-  <br>
-  <label for="role">Role</label>
-  <select name="role" id="role" required>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+<div class="flex flex-wrap justify-evenly">
+<div class="w-90">
+<div class="justify-items-center"><h1 class="block mb-2 text-lg font-bold text-gray-900">Create a new account</h1></div>
+<form class="max-w-md mx-auto" method="POST" action="/authentications/create-account">
+ <div class="mb-5">
+  <label for="username" class="block mb-2 text-sm font-medium text-gray-900">Username</label>
+  <input type="text" name="username" id="username" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 required" required>
+ </div>
+ <div class="mb-5" >
+  <label for="password" class="block mb-2 text-sm font-medium text-gray-900">Password</label>
+  <input type="password" name="password" id="password" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 required" >
+</div>
+<div class="mb-5">
+  <label for="confirmPassword" class="block mb-2 text-sm font-medium text-gray-900">Confirm Password</label>
+  <input type="password" name="confirmPassword" id="confirmPassword" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 required" >
+</div>
+<div class="mb-5">
+  <label for="role" class="block mb-2 text-sm font-medium text-gray-900">Role</label>
+  <select name="role" id="role" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 required" required>
     <option value="">--Choose role--</option>
 <option value="admin">Admin</option>
 <option value="chief">Chief</option>
 <option value="employee">Employee</option>
   </select>
-  <br>
- <label for="department">Department</label>
-  
-<select name="department" id="department" required>
+ </div>
+
+ <div class="mb-5">
+ <label for="department"  class="block mb-2 text-sm font-medium text-gray-900" >Department</label>
+  <select name="department" id="department" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required>
   <option value="">--Choose Department--</option>
   <% departments.forEach(department=>{ %>
   <option value="<%=department._id%>"><%=department.departmentname%></option>
   <%})%>
   </select>
-<br>
-  <button type="submit">Create Account</button>
+</div>
+  <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">Create Account</button>
 </form>
-
-<h2>Account List</h2>
+</div>
+<div class="justify-items-center">
+<h2 class="block mb-2 text-lg font-bold text-gray-900">Account List</h2>
 <ul>
 <%accounts.forEach(account=>{%>
-  <form action="/authentications/create-account/<%=account._id%>?_method=DELETE" method="POST">
-  <li>Username : <%=account.username%> | Role: <%=account.role%></li>
- <button type="submit">Delete</button>
+<form class="max-w-md mx-auto" action="/authentications/create-account/<%=account._id%>?_method=DELETE" method="POST">
+<div class="flex justify-between m-3 gap-10">
+<div class="flex flex-wrap gap-6">
+<li>Username : <%=account.username%> </li>
+<li>Role: <%=account.role%></li>
+</div>
+<button class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center" type="submit">Delete</button>
+</div>
   </form>
 <%})%>
-
 </ul>
+</div>
+</div>

@@ -1,16 +1,14 @@
-<nav>
-<a href="/">Home</a>
+
+<nav class="flex justify-between p-3.5 bg-blue-900 text-white">
+<a class="" href="/">Home</a>
 
     <%if(user){%>
 
-
-<a href="/authentications/sign-out">Sign out</a>
-
-
+<a  href="/authentications/sign-out">Welcome back <%=user.username.toUpperCase()%>!  Sign out</a>
 
    <%}else{%>
 
-<a href="/authentications/sign-in">Sign in</a>
+<a  href="/authentications/sign-in">Sign in</a>
 
    <%}%>
 </nav>

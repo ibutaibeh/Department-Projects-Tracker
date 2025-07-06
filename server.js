@@ -25,6 +25,10 @@ mongoose.connection.on('connected',()=>{
 app.use(express.urlencoded({extended:false}));
 //to use PUT and Delete methods
 app.use(methodOverride('_method'));
+
+//style css path
+app.use(express.static(path.join(__dirname,'public')));
+
 //setting up sessions
 app.use(
 session({

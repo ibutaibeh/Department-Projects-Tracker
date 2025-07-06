@@ -3,19 +3,27 @@
   "version": "1.0.0",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "concurrently \"npm run server\" \"npm run css\"",
+    "server": "nodemon app.js",
+    "css": "tailwindcss -1 ./public/stylesheets/tailwind.css -o ./public/stylesheets/style.css --watch"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "@tailwindcss/cli": "^4.1.11",
     "bcrypt": "^6.0.0",
     "dotenv": "^16.6.0",
     "ejs": "^3.1.10",
     "express": "^5.1.0",
     "express-session": "^1.18.1",
     "method-override": "^3.0.0",
-    "mongoose": "^8.16.1"
+    "mongoose": "^8.16.1",
+    "tailwindcss": "^4.1.11"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.0"
   }
 }

@@ -4,29 +4,37 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+      <link rel="stylesheet" href="/stylesheets/style.css">
 </head>
 <body>
-        <%-include('../partials/_navbar.ejs')%>
-<h1>Add New Department</h1>
-<form action="/departments/create-department" method="POST">
-
-  <label for="departmentname">Department Name</label>
-  <input type="text" name="departmentname" id="departmentname" required>
-<br>
-<br>
-  <button type="submit">Create Department</button>
-
+<%-include('../partials/_navbar.ejs')%>
+<div class="flex flex-wrap justify-evenly">
+<div class="w-90">
+<div class="justify-items-center"><h1 class="block mb-2 text-lg font-bold text-gray-900">Add New Department</h1></div>
+<form class="max-w-md mx-auto" action="/departments/create-department" method="POST">
+  <div class="flex flex-col gap-y-2">
+  <label class="block mb-2 text-sm font-medium text-gray-900" for="departmentname">Department Name</label>
+  <input  type="text" name="departmentname" id="departmentname" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 required" required>
+  <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">Create Department</button>
+  </div>
 </form>
+</div>
 
+<div>
+  <h2 class="block mb-2 text-lg font-bold text-gray-900">Departments List</h2>
 <ul>
 <%departments.forEach(department=>{%>
-  <form action="/departments/create-department/<%=department._id%>?_method=DELETE" method="POST">
- <li><%=department.departmentname%></li>
- <button type="submit">Delete</button>
+  <form class="max-w-md mx-auto" action="/departments/create-department/<%=department._id%>?_method=DELETE" method="POST">
+ <div class="flex justify-between gap-x-20 items-center">
+    <li class="font-semibold"><%=department.departmentname%></li>
+ <button class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center mb-2" type="submit">Delete</button>
+ </div>
   </form>
 
 <%})%>
 
 </ul>
+</div>
+</div>
 </body>
 </html>
